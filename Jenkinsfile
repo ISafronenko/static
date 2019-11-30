@@ -1,14 +1,15 @@
 pipeline {
-    agent any
-    stages {
-        stage('Build') {
-            steps {
-                sh 'echo "Hello World"'
-                sh '''
+  agent any
+  stages {
+    stage('Build') {
+      steps {
+        sh 'echo "Hello World"'
+        sh '''
                 echo "Multiline echos work too"
                 ls -lah
                 '''
-            }
-        }
+      }
     }
+
+  }
 }
