@@ -1,15 +1,14 @@
 pipeline {
-  agent any
-  stages {
-    stage('Build') {
-      steps {
-        sh 'echo "Hello World"'
-        sh '''
-                echo "Multiline echos work too"
-                ls -lah
-                '''
-      }
+    agent any
+    stages {
+        stage('Upload to AWS') {
+            stage('Upload to AWS') {
+                steps {
+                    withAWS(region: 'us-west-2', credentials: 'AKIA22XC3QMLPXNO4XEV') {
+                        s3Upload(file: 'index.html', bucket: 'ievgen-udacity-pipeline')
+                    }
+                }
+            }
+        }
     }
-
-  }
 }
